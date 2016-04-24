@@ -14,6 +14,6 @@ setup(
     author = "Samuel Thomas",
     author_email = "sgpthomas@gmail.com",
     description = ("A python library designed to make analyzing timeseries data easy."),
-    packages=['pydl'],
+    packages=['pydl', 'pydl.io', 'pydl.draw', 'pydl._analysis'],
     long_description=read('README.md'),
 )
