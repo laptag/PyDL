@@ -1,22 +1,32 @@
 """ Find zeros of given data """
 
-def _zeros(data, extrema):
+# imports
+import numpy as np
+
+def _zeros(data):
     zeros = [] # return array
 
     for i in range(1, len(data)):
         if (_isPositive(data[i]) != _isPositive(data[i-1])):
             if (abs(data[i]) < abs(data[i-1])):
-                if extrema:
-                    zeros.append(_isMinimum(data, i))
-                else:
-                    zeros.append(i)
+                zeros.append(i)
             else:
-                if extrema:
-                    zeros.append(_isMinimum(data, i, extra=-1))
-                else:
-                    zeros.append(i-1)
+                zeros.append(i-1)
 
     return zeros
+
+def _extrema(data):
+    data = np.diff(data)
+    zeros = _zeros(data)
+    i = 0
+    for x in zeros:
+        if not _isPositive(data[x-1]): # if previous value is negative, then rel min
+            zeros[i] = -x
+
+        i += 1
+
+    return zeros
+
 
 # private
 def _isPositive(val):

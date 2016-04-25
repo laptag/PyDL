@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = "pydl",
-    version = "0.2.1",
+    version = "0.3.6",
     author = "Samuel Thomas",
     author_email = "sgpthomas@gmail.com",
     description = ("A python library designed to make analyzing timeseries data easy."),

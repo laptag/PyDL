@@ -11,5 +11,15 @@ def staticCrossCorrelation(data_a, data_b):
 
 """ Finds approximate zeros for given data """
 from ._analysis.zeros import _zeros
-def zeros(data, extrema=False):
-    return _zeros(data, extrema)
+def zeros(data):
+    return _zeros(data)
+
+""" Finds relative extrema from given data. Returns array of extrem. Rel mins are negative. """
+from ._analysis.zeros import _extrema
+def extrema(data):
+    return _extrema(data)
+
+""" Uses fft and gaussian functions to filter low frequency noise out """
+from ._analysis.filter import _lowFreqFilter
+def lowFreqFilter(data, sigma=40, test_filter=False):
+    return _lowFreqFilter(data, sigma, test_filter)
