@@ -5,6 +5,7 @@ from scipy import signal
 from scipy.fftpack import fft, ifft
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
 # Uses fft and gaussian functions to filter low frequency noise out
 def _lowFreqFilter(data, sigma, test_filter):
@@ -18,9 +19,12 @@ def _lowFreqFilter(data, sigma, test_filter):
 
     # test filter
     if (test_filter):
+        print("Testing filter with size: {} and sigma: {}".format(size, sigma))
         plt.plot(abs(fft(data)), 'y')
         plt.plot(filt*1000, 'r')
         plt.show()
+        print("Exiting program")
+        sys.exit(0)
 
     # return filtered data
     return ifft(filt * fft(data))
