@@ -5,9 +5,9 @@ def reduceResolution(data, reducer):
     return _reduceResolution(data, reducer)
 
 """ Takes two time series and returns a value for how correlated they are """
-from ._analysis.crossCorrelation import _staticCrossCorrelation
-def staticCrossCorrelation(data_a, data_b):
-    return _staticCrossCorrelation(data_a, data_b)
+from ._analysis.correlation import _staticCorrelation
+def staticCorrelation(data_a, data_b):
+    return _staticCorrelation(data_a, data_b)
 
 """ Finds approximate zeros for given data """
 from ._analysis.zeros import _zeros
@@ -16,8 +16,8 @@ def zeros(data):
 
 """ Finds relative extrema from given data. Returns array of extrem. Rel mins are negative. """
 from ._analysis.zeros import _extrema
-def extrema(data):
-    return _extrema(data)
+def extrema(data, threshold=None):
+    return _extrema(data, threshold)
 
 """ Uses fft and gaussian functions to filter low frequency noise out """
 from ._analysis.filter import _lowFreqFilter

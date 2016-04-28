@@ -10,6 +10,10 @@ import sys
 # Uses fft and gaussian functions to filter low frequency noise out
 def _lowFreqFilter(data, sigma, test_filter):
     size = len(data)
+    if size % 2 != 0: # if size is odd, subtract one
+        data = np.delete(data, -1)
+        size -= 1
+
     gauss = signal.gaussian(size, std=sigma) # gen gaussian function
 
     # generate filter
@@ -27,4 +31,4 @@ def _lowFreqFilter(data, sigma, test_filter):
         sys.exit(0)
 
     # return filtered data
-    return ifft(filt * fft(data))
+    return np.real(ifft(filt * fft(data)))
